@@ -1,0 +1,72 @@
+# Turned on Hyper-V
+# Run PowerShell as an admin
+# Changed directory to root on PowerShell
+	cd\
+
+# Development Machine Environment
+	--vm-driver="hyperv" --hyperv-virtual-switch="Minikube"
+
+# Minikube Installation
+	minikube version
+	minikube --help
+	minikube get-k8s-versions
+	minikube status	:	
+
+# Making connection cluster
+	minikube.exe start --help
+	minikube.exe start --vm-driver="hyperv" --hyperv-virtual-switch="Minikube"
+	minikube status	:	
+
+
+# Checking the Kube
+	kubectl version
+	kubectl cluster-info:	Kubernetes master is running at https://[fe80::215:5dff:feb2:6d0b]:8443
+	kubectl config view:
+
+apiVersion: v1
+clusters:
+- cluster:
+    server: http://127.0.0.1:8080
+  name: localkube-image
+- cluster:
+    certificate-authority: C:\Users\dlleshaj\.minikube\ca.crt
+    server: https://[fe80::215:5dff:feb2:6d0b]:8443
+  name: minikube
+contexts:
+- context:
+    cluster: localkube-image
+    user: ""
+  name: localkube-image
+- context:
+    cluster: minikube
+    user: minikube
+  name: minikube
+current-context: minikube
+kind: Config
+preferences: {}
+users:
+- name: minikube
+  user:
+    client-certificate: C:\Users\dlleshaj\.minikube\client.crt
+    client-key: C:\Users\dlleshaj\.minikube\client.key
+
+
+#Kubernetes Dashboard
+	minikube.exe dashboard
+	kubectl config use-context minikube
+	kubectl.exe get nodes
+
+# Cluster IP Address
+	minikube.exe ip
+
+
+# Running a Nginx container (open source reverse proxy server for HTTPS example)
+	kubectl.exe run first-run --image=nginx --port=80
+
+# Show our deployment
+	kubectl.exe get pods
+	kubectl.exe describe pod first run		(also describe node if needed)
+
+# Expose as a service
+	kubectl.exe expose deployment first-run --type=NodePort
+
