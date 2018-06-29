@@ -1,0 +1,26 @@
+apiVersion: v1
+clusters:
+- cluster:
+    server: http://127.0.0.1:8080
+  name: localkube-image
+- cluster:
+    certificate-authority: C:\Users\dlleshaj\.minikube\ca.crt
+    server: https://[fe80::215:5dff:feb2:6d10]:8443
+  name: minikube
+contexts:
+- context:
+    cluster: localkube-image
+    user: ""
+  name: localkube-image
+- context:
+    cluster: minikube
+    user: minikube
+  name: minikube
+current-context: minikube
+kind: Config
+preferences: {}
+users:
+- name: minikube
+  user:
+    client-certificate: C:\Users\dlleshaj\.minikube\client.crt
+    client-key: C:\Users\dlleshaj\.minikube\client.key
